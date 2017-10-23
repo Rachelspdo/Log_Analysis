@@ -1,7 +1,8 @@
+#!/usr/bin/env python
+
 import psycopg2
 
 DBNAME = "news"
-
 
 
 # get_query_result function is used to execute a SQL query
@@ -10,21 +11,23 @@ def get_query_result(query):
     try:
         db = psycopg2.connect(database=DBNAME)
         c = db.cursor()
-        c.execute(query_1)
+        c.execute(query)
         results = c.fetchall()
         db.close()
         return results
+    except BaseException:
+        print("Unable to connect to the database")
 
 # Get the top three articles by views
 
 def top_three_popular_articles():
     query_1 ="SELECT * FROM Summary LIMIT 3;"
     popular_articles= get_query_result(query_1)
-    print('1. Most popular three articles of all times:")
+    print('1. Most popular three articles of all times:')
     print(' ')
     for i in popular_articles:
           print('"' + i[0] + '"' + ' -- ' + str(i[1]) + 'views')
-          print(' ')
+          print(' ') # space between line
 
 print(' ')
 
@@ -45,7 +48,7 @@ print(' ')
 
 # The day has more than 1% requests lead to error
 
-def day_with_perg_error():
+def day_with_high_perg_error():
     query_3="""SELECT DATE_REQUEST, (1.00 * TOTAL_ERRORS / TOTAL_REQUESTS) as PECG
     FROM Access_Summary_By_Date
     WHERE (1.00 * TOTAL_ERRORS / TOTAL_REQUESTS) > 0.01;"""
@@ -56,7 +59,9 @@ def day_with_perg_error():
           print(i[0] + " -- " + i[1] + '%' + ' error')
 
           
-
+top_three_popular_articles()
+most_popular_article_authors()
+day_with_high_perg_error()
 
 
 
