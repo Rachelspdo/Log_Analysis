@@ -58,8 +58,8 @@ __Create Access_Summary_By_Date table to get number of errors and number of requ
 
 ```CREATE VIEW Access_Summary_By_Date AS 
 SELECT  CAST(log.time AS Date) AS Date_Request,
-    SUM((CASE WHEN log.status='404 NOT FOUND' then 1
-         ELSE 0 END)) AS Total_Errors,
+        SUM((CASE WHEN log.status='404 NOT FOUND' then 1
+             ELSE 0 END)) AS Total_Errors,
         COUNT(*) AS Total_Requests
 FROM log
 GROUP BY Date_Request;
