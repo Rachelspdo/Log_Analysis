@@ -27,7 +27,7 @@ def top_three_popular_articles():
     print('1. Most popular three articles of all times:')
     print(' ')
     for i in popular_articles:
-        print('"' + i[0] + '"' + ' -- ' + str(i[1]) + 'views')
+        print('"' + str(i[1]) + '" -- ' + str(i[2]) + ' views')
         print(' ')  # space between line
 
 print(' ')
@@ -43,7 +43,7 @@ def most_popular_article_authors():
     print('2. The most popular article authors of all time:')
     print(' ')
     for i in popular_author:
-        print('"' + i[0] + '"' + ' -- ' + str(i[1]) + 'views')
+        print('"' + str(i[1]) + '"' + ' -- ' + str(i[2]) + ' views')
         print(' ')
 
 print(' ')
@@ -52,14 +52,14 @@ print(' ')
 
 
 def day_with_high_perg_error():
-    query_3 = """SELECT DATE_REQUEST, (1.00 * TOTAL_ERRORS / TOTAL_REQUESTS) as PECG
+    query_3 = """SELECT DATE_REQUEST, (100 * TOTAL_ERRORS / TOTAL_REQUESTS) as PECG
     FROM Access_Summary_By_Date
-    WHERE (1.00 * TOTAL_ERRORS / TOTAL_REQUESTS) > 0.01;"""
+    WHERE (100 * TOTAL_ERRORS / TOTAL_REQUESTS) > 1;"""
     error_day = get_query_result(query_3)
     print('3. The day has more than 1% requests lead to error:')
     print(' ')
     for i in error_day:
-        print(i[0] + " -- " + i[1] + '%' + ' error')
+        print(str(i[0]) + " -- " + str(i[1]) + '%' + ' error')
 
 top_three_popular_articles()
 most_popular_article_authors()
