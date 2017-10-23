@@ -43,7 +43,7 @@ def most_popular_article_authors():
     print('2. The most popular article authors of all time:')
     print(' ')
     for i in popular_author:
-        print('"' + str(i[1]) + '"' + ' -- ' + str(i[2]) + ' views')
+        print(str(i[1]) + ' -- ' + str(i[2]) + ' views')
         print(' ')
 
 print(' ')
