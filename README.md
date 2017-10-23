@@ -53,5 +53,9 @@ SELECT  CAST(log.time AS Date) AS Date_Request,
 FROM log
 GROUP BY Date_Request;
 ```
+# See Result:
+Make sure you have changed the directory inside **vagrant**
+
+Run ```python log_analysis.py```
 
 
