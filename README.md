@@ -1,5 +1,16 @@
 # Log_Analysis
 
+# Project Overview:
+
+In this project, you'll work with data that could have come from a real-world web application, with fields representing information that a web server would record, such as HTTP status codes and URL paths. The web server and the reporting tool both connect to the same database, allowing information to flow from the web server into the report.
+
+Three questions need to answer:
+
+1. What are the most popular three articles of all time?
+2. Who are the most popular article authors of all time?
+3. On which days did more than 1% of requests lead to errors?
+
+
 # __How To Install:__
 
 1. Install [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/)
@@ -53,5 +64,9 @@ SELECT  CAST(log.time AS Date) AS Date_Request,
 FROM log
 GROUP BY Date_Request;
 ```
+# See Result:
+Make sure you have changed the directory inside **vagrant**
+
+Run ```python log_analysis.py```
 
 
