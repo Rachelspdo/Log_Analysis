@@ -3,17 +3,6 @@ import psycopg2
 DBNAME = "news"
 
 
-# Find the most popular article authors
-
-query_2 ="""SELECT Popular_author.author, authors.name, Popular_author.Total_Views
-FROM authors, Popular_author
-WHERE authors.id = Popular_author.author;"""
-
-# Find the day which has more than 1% or 0.01 of requests lead to errors
-
-query_3="""SELECT DATE_REQUEST, (1.00 * TOTAL_ERRORS / TOTAL_REQUESTS) as PECG
-FROM Access_Summary_By_Date
-WHERE (1.00 * TOTAL_ERRORS / TOTAL_REQUESTS) > 0.01;"""
 
 # get_query_result function is used to execute a SQL query
 
@@ -42,16 +31,28 @@ print(' ')
           
 def most_popular_article_authors():
     query_2 ="""SELECT Popular_author.author, authors.name, Popular_author.Total_Views
-FROM authors, Popular_author
-WHERE authors.id = Popular_author.author;"""
+    FROM authors, Popular_author
+    WHERE authors.id = Popular_author.author;"""
     popular_author= get_query_result(query_2)
     print('Question 2: The most popular article authors of all time:')
-    for i in popular_articles:
+    for i in popular_author:
           print('"' + i[0] + '"' + ' -- ' + str(i[1]) + 'views')
           print(' ')
           
 print(' ')
 
+# The day has more than 1% requests lead to error
+
+def day_with_perg_error():
+    query_3="""SELECT DATE_REQUEST, (1.00 * TOTAL_ERRORS / TOTAL_REQUESTS) as PECG
+    FROM Access_Summary_By_Date
+    WHERE (1.00 * TOTAL_ERRORS / TOTAL_REQUESTS) > 0.01;"""
+    error_day = get_query_result(query_3)
+    print('Question 3: The day has more than 1% requests lead to error:')
+    for i in error_day:
+          print(i[0] + " -- " + i[1] + '%' + ' error')
+
+          
 
 
 
