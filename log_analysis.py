@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import psycopg2
 
 DBNAME = "news"
@@ -6,15 +8,13 @@ DBNAME = "news"
 # get_query_result function is used to execute a SQL query
 
 def get_query_result(query):
-    try:
         db = psycopg2.connect(database=DBNAME)
         c = db.cursor()
         c.execute(query)
         results = c.fetchall()
         db.close()
         return results
-    except BaseException:
-        print("Unable to connect to the database")
+
 
 # Get the top three articles by views
 
@@ -61,7 +61,7 @@ def day_with_high_perg_error():
     for i in error_day:
         print(str(i[0]) + " -- " + str(i[1]) + '%' + ' error')
 
-
-top_three_popular_articles()
-most_popular_article_authors()
-day_with_high_perg_error()
+if __name__ == '__main__':
+    top_three_popular_articles()
+    most_popular_article_authors()
+    day_with_high_perg_error()
