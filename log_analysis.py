@@ -37,8 +37,20 @@ def top_three_popular_articles():
           print(' ')
 
 print(' ')
-    
+
+# Get total of all articles views by each author
           
+def most_popular_article_authors():
+    query_2 ="""SELECT Popular_author.author, authors.name, Popular_author.Total_Views
+FROM authors, Popular_author
+WHERE authors.id = Popular_author.author;"""
+    popular_author= get_query_result(query_2)
+    print('Question 2: The most popular article authors of all time:')
+    for i in popular_articles:
+          print('"' + i[0] + '"' + ' -- ' + str(i[1]) + 'views')
+          print(' ')
+          
+print(' ')
 
 
 
