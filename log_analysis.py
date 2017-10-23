@@ -28,6 +28,7 @@ def top_three_popular_articles():
         print('"' + str(i[1]) + '" -- ' + str(i[2]) + ' views')
         print(' ')  # space between line
 
+
 print(' ')
 
 # Get total of all articles views by each author
@@ -44,6 +45,7 @@ def most_popular_article_authors():
         print(str(i[1]) + ' -- ' + str(i[2]) + ' views')
         print(' ')
 
+
 print(' ')
 
 # The day has more than 1% requests lead to error
@@ -58,6 +60,7 @@ def day_with_high_perg_error():
     print(' ')
     for i in error_day:
         print(str(i[0]) + " -- " + str(i[1]) + '%' + ' error')
+
 
 top_three_popular_articles()
 most_popular_article_authors()
